@@ -15,30 +15,6 @@
       height: 100%;
     }
 
-    .scrolling-words {
-      position: absolute;
-      width: 100%;
-      top: 0;
-      left: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .word {
-      font-size: 9vw;
-      font-weight: bold;
-      line-height: 1.2;
-      opacity: 0.8;
-      user-select: none;
-      pointer-events: none;
-      white-space: nowrap;
-      text-align: center;
-      padding: 0 5vw;
-      text-transform: none;
-      font-family: 'Times New Roman', serif;
-    }
-
     .name {
       position: relative;
       z-index: 2;
@@ -48,7 +24,19 @@
       text-align: center;
       white-space: nowrap;
       width: 100%;
-      margin-top: 20vh;
+      margin-top: 25vh;
+      text-transform: lowercase;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .subtitle {
+      position: relative;
+      z-index: 2;
+      color: white;
+      font-size: 4vw;
+      text-align: center;
+      width: 100%;
+      margin-top: 1vh;
       text-transform: lowercase;
       font-family: 'Times New Roman', serif;
     }
@@ -60,7 +48,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 2vh 5vw;
-      margin-top: 2vh;
+      margin-top: 4vh;
       padding: 0 5vw;
       font-size: 5vw;
       font-weight: bold;
@@ -82,11 +70,8 @@
 </head>
 <body>
 
-  <div class="scrolling-words" id="scrollingContainer"></div>
-
-  <div class="name">
-    lauren burns coady
-  </div>
+  <div class="name">lauren burns coady</div>
+  <div class="subtitle">application: analyst, anthropic institute</div>
 
   <div class="links">
     <a href="LBC_Anthropic_Letter.pdf" target="_blank">letter</a>
@@ -97,93 +82,6 @@
   </div>
 
   <script>
-    // Fisher-Yates shuffle
-    function shuffle(arr) {
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
-
-    const words = shuffle([
-      "writing",
-      "research",
-      "policy analysis",
-      "applied research",
-      "research strategy",
-      "research design",
-      "cross-disciplinary synthesis",
-      "structural analysis",
-      "pattern recognition",
-      "qualitative analysis",
-      "comparative analysis",
-      "evidence synthesis",
-      "knowledge translation",
-      "methodological development",
-      "public scholarship",
-      "institutional research",
-      "epistemic design",
-      "narrative design",
-      "mixed-methods study design",
-      "procedural reasoning",
-      "creative writing",
-      "cultural analysis",
-      "technical writing",
-      "public speaking",
-      "meta-research",
-      "program evaluation",
-      "impact measurement",
-      "scenario analysis",
-      "stakeholder engagement",
-      "information architecture",
-      "organizational analysis",
-      "technology assessment",
-      "strategic communication",
-      "editorial production",
-      "conceptual development",
-      "literature review",
-      "data interpretation",
-      "workshop facilitation"
-    ]);
-
-    const container = document.getElementById('scrollingContainer');
-
-    const allWords = [];
-    for (let i = 0; i < 20; i++) {
-      allWords.push(...words);
-    }
-
-    allWords.forEach(word => {
-      const div = document.createElement('div');
-      div.className = 'word';
-      div.textContent = word;
-      container.appendChild(div);
-
-      function changeColor() {
-        const hue = Math.floor(Math.random() * 360);
-        const saturation = 30 + Math.random() * 70;
-        const lightness = 30 + Math.random() * 50;
-        div.style.color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-        const nextTime = 1500 + Math.random() * 1500;
-        setTimeout(changeColor, nextTime);
-      }
-
-      changeColor();
-    });
-
-    let offset = 0;
-    function scroll() {
-      offset -= 1.2;
-      container.style.transform = `translateY(${offset}px)`;
-      if (Math.abs(offset) >= container.scrollHeight / 2) {
-        offset = 0;
-      }
-      requestAnimationFrame(scroll);
-    }
-
-    scroll();
-
     function changeBackground() {
       const hue = Math.floor(Math.random() * 360);
       const saturation = 30 + Math.random() * 70;
@@ -194,7 +92,6 @@
       const nextTime = 1500 + Math.random() * 1500;
       setTimeout(changeBackground, nextTime);
     }
-
     changeBackground();
   </script>
 </body>
